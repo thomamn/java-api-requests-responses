@@ -3,12 +3,12 @@ package com.booleanuk.api.requests;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Book {
-
+    private static int nextID=1;
     private String title;
     private int numPages;
     private String author;
     private String genre;
-    int id=0;
+    private int id;
 
 
 
@@ -17,7 +17,8 @@ public class Book {
         this.numPages=numPages;
         this.author=author;
         this.genre=genre;
-
+        this.id=nextID;
+        nextID++;
     }
 
     public String getTitle() {
