@@ -38,7 +38,12 @@ public class Books {
     @ResponseStatus(HttpStatus.OK)
     public Book getBook(@RequestBody Book book, @PathVariable int id){
 
-        return(books.get(id));
+        for (Book b: books){
+            if (b.getId()==id){
+                return b;
+            }
+        }
+        return null;
 
     }
 
@@ -47,9 +52,11 @@ public class Books {
     public Book changeBook(@RequestBody Book book, @PathVariable int id){
 
         for (Book b: books){
-            if (Objects.equals(b.getNumPages(), id)){
+            if (b.getId()==id){
+                b.setAuthor(book.getAuthor());
+                b.setGenre(book.getGenre());
                 b.setTitle(book.getTitle());
-                return b;
+                b.setNumPages(book.getNumPages());
             }
         }
 
@@ -63,7 +70,7 @@ public class Books {
     public Book deleteBook(@RequestBody Book book, @PathVariable int id){
 
         for (Book b: books){
-            if (Objects.equals(b.getNumPages(), id)){
+            if (Objects.equals(b.getId(), id)){
                 books.remove(b);
                 return b;
             }

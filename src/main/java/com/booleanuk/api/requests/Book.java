@@ -1,17 +1,22 @@
 package com.booleanuk.api.requests;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Book {
 
     private String title;
     private int numPages;
     private String author;
     private String genre;
+    private AtomicInteger gig=new AtomicInteger();
+    int id=gig.get();
 
     public Book(String title, int numPages, String author, String genre){
         this.title=title;
         this.numPages=numPages;
         this.author=author;
         this.genre=genre;
+
     }
 
     public String getTitle() {
@@ -44,5 +49,13 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
