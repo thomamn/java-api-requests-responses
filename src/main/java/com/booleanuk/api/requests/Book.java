@@ -8,8 +8,9 @@ public class Book {
     private int numPages;
     private String author;
     private String genre;
-    private AtomicInteger gig=new AtomicInteger();
-    int id=gig.get();
+    int id=0;
+
+
 
     public Book(String title, int numPages, String author, String genre){
         this.title=title;
